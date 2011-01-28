@@ -9,9 +9,9 @@ config:
   all:
     BUNDLE_WITHOUT: "test:development"
 
-# collaborators:
-#   all:
-#     - "heroku1@somedomain.com"
+collaborators:
+  all:
+    - "pomartel@coderubik.com"
 
 # domains:
 #   production:

@@ -11,7 +11,7 @@ namespace :heroku do
       require 'aws/s3'
       puts "[\#{Time.now}] heroku:backup started"
       name = "\#{ENV['APP_NAME']}-\#{Time.now.strftime('%Y-%m-%d-%H%M%S')}.dump"
-      db = ENV['DATABASE_URL'].match(/postgres:\/\/([^:]+):([^@]+)@([^\/]+)\/(.+)/)
+      db = ENV['DATABASE_URL'].match(/postgres:\\/\\/([^:]+):([^@]+)@([^\\/]+)\\/(.+)/)
       system "PGPASSWORD=\#{db[2]} pg_dump -Fc --username=\#{db[1]} --host=\#{db[3]} \#{db[4]} > tmp/\#{name}"
       
       AWS::S3::Base.establish_connection!(
@@ -31,4 +31,9 @@ task :cron => :environment do
   Rake::Task['heroku:backup'].invoke
   User.send_upgrade_mail
 end
+
+task :deploy =>  ["heroku:deploy"]
+task :console => ["heroku:console"]
+task :capture => ["heroku:capture"]
 CODE
+
