@@ -1,5 +1,5 @@
-application = <<-GENERATORS
-    config.generators do |g|
+app_config = <<-GENERATORS
+  config.generators do |g|
       g.template_engine :haml
       g.test_framework  false
     end
@@ -8,8 +8,9 @@ application = <<-GENERATORS
     
     config.autoload_paths << File.join(config.root, "lib")
 GENERATORS
-application generators
+application app_config
 
+run 'rm script/rails'
 file 'script/rails', <<-CODE
 #!/usr/bin/env ruby
 # This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
@@ -71,3 +72,18 @@ development:
 production:
   <<: *defaults
 CODE
+
+file 'app/models/settings.rb', <<-CODE
+class Settings < Settingslogic
+   source "\#{Rails.root}/config/settings.yml"
+   namespace Rails.env
+ end
+CODE
+
+inside "config/locales" do
+file 'fr.yml', <<-CODE
+fr:
+  hello: "Bonjour"
+CODE
+get "https://github.com/svenfuchs/rails-i18n/raw/master/rails/locale/fr.yml", "fr-defaults.yml"
+end

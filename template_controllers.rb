@@ -1,3 +1,4 @@
+run 'rm app/controllers/application_controller.rb'
 file 'app/controllers/application_controller.rb', <<-CODE
 class ApplicationController < ActionController::Base
   include Facebooker2::Rails::Controller
@@ -51,8 +52,17 @@ class ApplicationController < ActionController::Base
 end
 CODE
 
-route "match '/tab' => 'pages#tab'"
-generate :controller, "pages tab"
-file 'app/views/pages/index.html.haml', <<-END
+file 'app/controllers/pages_controller.rb', <<-CODE
+class PagesController < ApplicationController
+  
+  def tab
+    render :tab, :layout => 'tab'
+  end
+  
+end
+CODE
+
+
+file 'app/views/pages/index.html.haml', <<-CODE
 %h1 This is the tab
-END
+CODE

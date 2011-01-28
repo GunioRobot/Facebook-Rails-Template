@@ -18,6 +18,17 @@ require 'compass/app_integration/rails'
 Compass::AppIntegration::Rails.initialize!
 CODE
 
+file 'app/stylesheets/reset.scss', <<-CODE
+@import "compass/reset";
+CODE
+
+file 'app/stylesheets/facebook.scss', <<-CODE
+@import "partials/lib";
+CODE
+
+file 'app/stylesheets/tab.scss', <<-CODE
+@import "partials/lib";
+CODE
 
 file 'app/stylesheets/partials/_lib.scss', <<-CODE
 @import "compass/utilities";

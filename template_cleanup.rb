@@ -13,6 +13,9 @@ run 'rm public/javascripts/controls.js'
 run 'rm public/javascripts/dragdrop.js'
 run 'rm public/javascripts/effects.js'
 run 'rm public/javascripts/prototype.js'
+run 'rm public/javascripts/rails.js'
+
+run 'rm -rf test'
 
 inside "public/javascripts" do
   get "https://github.com/rails/jquery-ujs/raw/master/src/rails.js", "rails.js"
