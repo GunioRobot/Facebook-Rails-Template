@@ -59,6 +59,10 @@ production:
   secret:  
 CODE
 
+file 'config/initializers/facebooker2.rb', <<-CODE
+Facebooker2.load_facebooker_yaml
+CODE
+
 file 'config/settings.yml', <<-CODE
 defaults: &defaults
   facebook_apps_url: http://apps.facebook.com

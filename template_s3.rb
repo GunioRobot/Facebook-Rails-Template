@@ -15,8 +15,8 @@ namespace :heroku do
       system "PGPASSWORD=\#{db[2]} pg_dump -Fc --username=\#{db[1]} --host=\#{db[3]} \#{db[4]} > tmp/\#{name}"
       
       AWS::S3::Base.establish_connection!(
-        :access_key_id     => ENV['s3_access_key_id'],
-        :secret_access_key => ENV['s3_secret_access_key']
+        :access_key_id     => ENV['S3_ACCESS_KEY_ID'],
+        :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
       )
       bucket = "\#{ENV['APP_NAME']}-heroku-backups"
       AWS::S3::S3Object.store(name, open("tmp/\#{name}"), bucket)
@@ -29,7 +29,6 @@ end
 
 task :cron => :environment do
   Rake::Task['heroku:backup'].invoke
-  User.send_upgrade_mail
 end
 
 task :deploy =>  ["heroku:deploy"]

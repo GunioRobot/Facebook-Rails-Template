@@ -8,6 +8,8 @@ stacks:
 config:
   all:
     BUNDLE_WITHOUT: "test:development"
+    S3_ACCESS_KEY_ID: 
+    S3_SECRET_ACCESS_KEY: 
 
 collaborators:
   all:

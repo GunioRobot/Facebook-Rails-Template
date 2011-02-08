@@ -63,6 +63,6 @@ end
 CODE
 
 
-file 'app/views/pages/index.html.haml', <<-CODE
+file 'app/views/pages/tab.html.haml', <<-CODE
 %h1 This is the tab
 CODE
