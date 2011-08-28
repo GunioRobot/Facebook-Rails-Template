@@ -1,9 +1,5 @@
 file '.rvmrc', <<-CODE
-if [[ -s "/Users/po/.rvm/environments/ruby-1.9.2-head@rails3" ]] ; then
-  . "/Users/po/.rvm/environments/ruby-1.9.2-head@rails3"
-else
-  rvm --create use  "ruby-1.9.2-head@rails3"
-fi
+rvm --create use  "ruby-1.9.2@rails3"
 CODE
 
 run 'rm .gitignore'

@@ -14,6 +14,7 @@ run 'rm public/javascripts/dragdrop.js'
 run 'rm public/javascripts/effects.js'
 run 'rm public/javascripts/prototype.js'
 run 'rm public/javascripts/rails.js'
+run 'rm public/javascripts/application.js'
 
 run 'rm -rf test'
 

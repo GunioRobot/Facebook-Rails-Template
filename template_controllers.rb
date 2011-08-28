@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_facebook_user
   end
-  
+
   def inside_tab?
-    !!facebook_params[:profile_id]
+    !!facebook_params['page'] || object_to_boolean(params[:inside_tab])
   end
   
   def is_admin?
@@ -40,10 +40,6 @@ class ApplicationController < ActionController::Base
     Settings.facebook_apps_url + '/' + Settings.canvas_name + path
   end
   
-  def inside_tab?
-    facebook_params && facebook_params[:profile_id]
-  end
-  
   def facebook_user_agent?
     logger.debug request.env["HTTP_USER_AGENT"]
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].starts_with?('facebookexternalhit')
@@ -56,7 +52,6 @@ file 'app/controllers/pages_controller.rb', <<-CODE
 class PagesController < ApplicationController
   
   def tab
-    render :tab, :layout => 'tab'
   end
   
 end

@@ -3,30 +3,21 @@
 #----------------------------------------------------------------------------
 
 file 'config/compass.rb', <<-CODE
-project_type = :rails
-project_path = Compass::AppIntegration::Rails.root
-http_path = "/"
-css_dir = "public/stylesheets/compiled"
-sass_dir = "app/stylesheets"
-environment = Compass::AppIntegration::Rails.env
-CODE
-
-
-initializer 'compass.rb', <<-CODE
-require 'compass'
-require 'compass/app_integration/rails'
-Compass::AppIntegration::Rails.initialize!
+if Rails.env.development?
+  project_type = :rails
+  project_path = Compass::AppIntegration::Rails.root
+  environment = Compass::AppIntegration::Rails.env
+  http_path = "/"
+  css_dir = "public/stylesheets/compiled"
+  sass_dir = "app/stylesheets"
+end
 CODE
 
 file 'app/stylesheets/reset.scss', <<-CODE
 @import "compass/reset";
 CODE
 
-file 'app/stylesheets/facebook.scss', <<-CODE
-@import "partials/lib";
-CODE
-
-file 'app/stylesheets/tab.scss', <<-CODE
+file 'app/stylesheets/style.scss', <<-CODE
 @import "partials/lib";
 CODE
 
