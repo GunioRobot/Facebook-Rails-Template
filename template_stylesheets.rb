@@ -2,26 +2,18 @@
 # Compass
 #----------------------------------------------------------------------------
 
-file 'config/compass.rb', <<-CODE
-if Rails.env.development?
-  project_type = :rails
-  project_path = Compass::AppIntegration::Rails.root
-  environment = Compass::AppIntegration::Rails.env
-  http_path = "/"
-  css_dir = "public/stylesheets/compiled"
-  sass_dir = "app/stylesheets"
-end
-CODE
-
-file 'app/stylesheets/reset.scss', <<-CODE
+file 'app/assets/stylesheets/reset.css.scss', <<-CODE
 @import "compass/reset";
 CODE
 
-file 'app/stylesheets/style.scss', <<-CODE
+run 'rm app/assets/stylesheets/application.css'
+file 'app/assets/stylesheets/application.css.scss', <<-CODE
+//= require reset
+//= require common
 @import "partials/lib";
 CODE
 
-file 'app/stylesheets/partials/_lib.scss', <<-CODE
+file 'app/assets/stylesheets/partials/_lib.css.scss', <<-CODE
 @import "compass/utilities";
 @import "compass/css3";
 @import "blueprint";
@@ -40,8 +32,7 @@ $medium-blue: #627AAD;
 $dark-blue: #40539D;
 CODE
 
-
-file 'app/stylesheets/common.scss', <<-CODE
+file 'app/assets/stylesheets/common.css.scss', <<-CODE
 @import "partials/lib";
 @include blueprint-typography-defaults;
 @include blueprint-form;

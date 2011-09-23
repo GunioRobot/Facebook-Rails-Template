@@ -1,5 +1,5 @@
 file '.rvmrc', <<-CODE
-rvm --create use  "ruby-1.9.2@rails3"
+rvm --create use  "ruby-1.9.2@rails31"
 CODE
 
 run 'rm .gitignore'
@@ -10,10 +10,11 @@ log/*.log
 tmp/**/*
 config/database.yml
 db/*.sqlite3
-public/uploads/*
 gems/*
 !gems/cache
 !gems/bundler
+public/assets
+.sass-cache/
 FILE
 
 git :init

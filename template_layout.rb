@@ -4,24 +4,18 @@ file 'app/views/layouts/application.html.haml', <<-CODE
 !!!
 %html
   %head
-    = javascript_include_tag "https://www.google.com/jsapi?key=ABQIAAAAh-ewEMuDn9AhystUDMAteRRbXrCeHQQS-PFkapLQWg-4FVmUCBTZTAWSUMnrkgA4AHQ1FwMHyi4K-g"
-    :javascript
-      google.load("jquery", "1.6.2");
-    = javascript_include_tag 'compiled/facebook.js'
-    = stylesheet_link_tag 'compiled/reset.css', 'compiled/common.css', 'compiled/style.css', :media => 'all'
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application', :media => 'all'
     = csrf_meta_tag
 
     %title Facebook App
-      
-    :javascript
-      CANVAS_NAME = "\#{Settings.canvas_name}"
     
   %body{ :id => body_id, :class => body_class }
     = render 'shared/fb_libs'
     #main      
       = yield
 
-      #footer
+    #footer
 CODE
 
 file 'app/views/shared/_error_messages.html.haml', <<-CODE

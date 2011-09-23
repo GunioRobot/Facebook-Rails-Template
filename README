@@ -2,4 +2,4 @@
 
 This is my template for generating Facebook apps with Rails on Heroku.
 
-rails new cascades -m gem/Facebook-Rails-Template/main.rb 
+rails new grn -m gem/Facebook-Rails-Template/main.rb 
