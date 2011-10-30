@@ -59,16 +59,16 @@ form, .form {
   div.buttons {
     margin-top: 15px;
   }
-  
+
   input, textarea { margin:0.5em 0; }
-  
+
   input[type='text'], textarea {
     width: 400px;
     @include border-radius(4px)
   }
 
   textarea { height: 100px; font-size: 11px; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; }
-  
+
   label {
     display: block;
     &.checkbox, &.radio {

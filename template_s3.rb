@@ -9,7 +9,7 @@ rakefile 'heroku.rake' do
         name = "\#{ENV['APP_NAME']}-\#{Time.now.strftime('%Y-%m-%d-%H%M%S')}.dump"
         db = ENV['DATABASE_URL'].match(/postgres:\\/\\/([^:]+):([^@]+)@([^\\/]+)\\/(.+)/)
         system "PGPASSWORD=\#{db[2]} pg_dump -Fc --username=\#{db[1]} --host=\#{db[3]} \#{db[4]} > tmp/\#{name}"
-      
+
         AWS::S3::Base.establish_connection!(
           :access_key_id     => ENV['S3_ACCESS_KEY_ID'],
           :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']

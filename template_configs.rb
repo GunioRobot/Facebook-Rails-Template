@@ -3,9 +3,9 @@ app_config = <<-GENERATORS
       g.template_engine :haml
       g.test_framework  false
     end
-    
+
     config.time_zone = 'Eastern Time (US & Canada)'
-    
+
     config.autoload_paths << File.join(config.root, "lib")
 GENERATORS
 application app_config
@@ -20,14 +20,14 @@ CODE
 
 file 'config/facebooker.yml', <<-CODE
 development:
-  app_id:  
-  api_key: 
-  secret:  
+  app_id:
+  api_key:
+  secret:
 
 production:
-  app_id:  
-  api_key: 
-  secret:  
+  app_id:
+  api_key:
+  secret:
 CODE
 
 initializer 'facebooker2.rb', <<-CODE
@@ -38,10 +38,10 @@ file 'config/settings.yml', <<-CODE
 defaults: &defaults
   admin_uids:
     - 594760378
-    
+
 development:
   <<: *defaults
-  
+
 production:
   <<: *defaults
 CODE

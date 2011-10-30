@@ -9,17 +9,17 @@ file 'app/views/layouts/application.html.haml', <<-CODE
     = csrf_meta_tag
 
     %title Facebook App
-    
+
   %body{ :id => body_id, :class => body_class }
     = render 'shared/fb_libs'
-    #main      
+    #main
       = yield
 
     #footer
 CODE
 
 file 'app/views/shared/_error_messages.html.haml', <<-CODE
-- if target.errors.any?  
+- if target.errors.any?
   #errorExplanation
     %ul
       - target.errors.full_messages.each do |msg|
